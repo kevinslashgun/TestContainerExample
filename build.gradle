@@ -5,8 +5,8 @@ plugins {
     id 'com.diffplug.spotless' version "6.25.0"
 }
 
-group = 'com'
-version = '0.0.1-SNAPSHOT'
+group = 'my'
+version = '1.0.0-SNAPSHOT'
 
 java {
     toolchain {
@@ -22,16 +22,25 @@ dependencies {
     // Importa il BOM di Spring Boot per gestire automaticamente le versioni
     implementation platform('org.springframework.boot:spring-boot-dependencies:3.3.5')
 
+    // Dipendenze con vulnerabilità
+    implementation 'org.apache.commons:commons-compress:1.26.0'
+    implementation 'org.xmlunit:xmlunit-core:2.10.0'
+
     // Dipendenze dell'applicazione
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    runtimeOnly 'org.postgresql:postgresql'
+    implementation 'org.postgresql:postgresql'
+
+    // Dipendenze per Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 
     // Dipendenze per i test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:postgresql'
-    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'io.rest-assured:rest-assured'
 }
 
