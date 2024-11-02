@@ -26,8 +26,8 @@ public class RealEstateController {
     }
 
     @GetMapping
-    public List<RealEstate> getAllRealEstate() {
-        return realEstateService.getAllRealEstate();
+    public List<RealEstate> getAllRealEstates() {
+        return realEstateService.getAllRealEstates();
     }
 
     @GetMapping("/{id}")

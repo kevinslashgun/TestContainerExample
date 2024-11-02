@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version '3.3.5'
     id 'io.spring.dependency-management' version '1.1.6'
     id 'com.diffplug.spotless' version "6.25.0"
+    id 'jacoco'
 }
 
 group = 'my'
@@ -12,6 +13,10 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
+}
+
+jacoco {
+    toolVersion = "0.8.8"
 }
 
 repositories {
@@ -47,6 +52,7 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
     testLogging {
         events = ["PASSED", "FAILED", "SKIPPED"]
         showStandardStreams = true
@@ -68,3 +74,11 @@ spotless {
         formatAnnotations()
     }
 }
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+

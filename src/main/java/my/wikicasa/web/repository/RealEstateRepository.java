@@ -71,4 +71,10 @@ public class RealEstateRepository {
         String sql = "DELETE FROM real_estate WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
+
+    public void deleteByNameAddressPrice(String name, String address, Double price) {
+        String sql = "DELETE FROM real_estate WHERE name = ? AND address = ? AND price = ?";
+        jdbcTemplate.update(sql, name, address, price);
+    }
+
 }

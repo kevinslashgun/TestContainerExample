@@ -22,7 +22,7 @@ public class RealEstateService {
         return realEstateRepository.save(realEstate);
     }
 
-    public List<RealEstate> getAllRealEstate() {
+    public List<RealEstate> getAllRealEstates() {
         return realEstateRepository.findAll();
     }
 
