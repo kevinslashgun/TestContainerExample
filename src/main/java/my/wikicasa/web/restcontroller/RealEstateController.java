@@ -1,5 +1,6 @@
 package my.wikicasa.web.restcontroller;
 
+import jakarta.validation.Valid;
 import my.wikicasa.web.entity.RealEstate;
 import my.wikicasa.web.service.RealEstateService;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public class RealEstateController {
     }
 
     @PostMapping
-    public ResponseEntity<RealEstate> createRealEstate(@RequestBody RealEstate realEstate) {
+    public ResponseEntity<RealEstate> createRealEstate(@Valid @RequestBody RealEstate realEstate) {
         RealEstate createdRealEstate = realEstateService.createRealEstate(realEstate);
         return new ResponseEntity<>(createdRealEstate, HttpStatus.CREATED);
     }

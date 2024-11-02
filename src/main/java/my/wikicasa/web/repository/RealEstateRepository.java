@@ -26,7 +26,7 @@ public class RealEstateRepository {
         realEstate.setId(rs.getLong("id"));
         realEstate.setName(rs.getString("name"));
         realEstate.setAddress(rs.getString("address"));
-        realEstate.setPrice(rs.getBigDecimal("price"));
+        realEstate.setPrice(rs.getDouble("price"));
         realEstate.setRooms(rs.getInt("rooms"));
         realEstate.setBathrooms(rs.getInt("bathrooms"));
         realEstate.setSqMeters(rs.getDouble("sq_meters"));
