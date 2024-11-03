@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/realestate")
@@ -37,8 +38,8 @@ public class RealEstateController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RealEstate> updateRealEstate(@PathVariable Long id, @RequestBody RealEstate updatedRealEstate) {
-        RealEstate realEstate = realEstateService.updateRealEstate(id, updatedRealEstate);
+    public ResponseEntity<RealEstate> updateRealEstate(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
+        RealEstate realEstate = realEstateService.updateRealEstate(id, updates);
         return ResponseEntity.ok(realEstate);
     }
 
